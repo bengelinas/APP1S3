@@ -5,6 +5,7 @@ public class PlatAuMenu {
     private String description;
     private double prix;
 
+
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
         this.description = description;
