@@ -1,10 +1,15 @@
 package menufact.plats;
 
+import ingredients.Ingredient;
+import ingredients.IngredientInventaire;
+
+import java.util.ArrayList;
+
 public class PlatAuMenu {
     private int code;
     private String description;
     private double prix;
-
+    private ArrayList<IngredientInventaire> recette = new ArrayList<IngredientInventaire>();
 
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
