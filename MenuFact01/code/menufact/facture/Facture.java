@@ -19,8 +19,22 @@ public class Facture {
     private ArrayList<PlatChoisi> platchoisi = new ArrayList<PlatChoisi>();
     private int courant;
     private Client client;
+    private ArrayList<Subscriber> subscriber;
 
+    /**********************Abonnements ************/
+    public void subscribe(Subscriber s ){
+        subscriber.add(s);
+    }
+    public void unsubscribe(Subscriber s){
+        for(int i=0; i< subscriber.size() -1; i++){
+            if(subscriber.get(i) == s){
+                subscriber.remove(i);
+            }
+        }
+    }
+    public void notifySubscriber(){
 
+    }
     /**********************Constantes ************/
     private final double TPS = 0.05;
     private final double TVQ = 0.095;
@@ -115,6 +129,7 @@ public class Facture {
         etat = FactureEtat.OUVERTE;
         courant = -1;
         this.description = description;
+        ArrayList<Subscriber> subscriber = new ArrayList<Subscriber>();
     }
 
     /**
