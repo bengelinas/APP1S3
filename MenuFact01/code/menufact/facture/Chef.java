@@ -1,5 +1,6 @@
 package menufact.facture;
 
+
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import inventaire.Inventaire;
@@ -20,7 +21,13 @@ public class Chef implements Subscriber{
             instance = new Chef();
         }
         return instance;
+    }
+    private void Preparation(int[][] liste, PlatAuMenu PlatEnPreparation) {
+        for (int i = 0; i < liste.length; i++) {
+            inventaire.retirer(liste[i][0], liste[i][1]);
         }
+        //TODO PlatEnPreparation doit etre mis en etat servi
+    }
 
     private boolean verifier(PlatAuMenu plat) {
         int[][] liste = new int[0][2];

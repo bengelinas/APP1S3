@@ -21,6 +21,7 @@ public class IngredientInventaire {
     public int getQuantite() {
         return quantite;
     }
+    public void retirerQuantite(int pi_QuantiteAEnlever){quantite-=pi_QuantiteAEnlever;};
 
     public void setQuantite(int quantite) throws IngredientException{
 
