@@ -22,23 +22,20 @@ public class Chef implements Subscriber{
         return instance;
         }
 
-    private boolean verifier(PlatAuMenu plat)
-    {
+    private boolean verifier(PlatAuMenu plat) {
         int[][] liste = new int[0][2];
-        for(int i=0; i < plat.getRecette().size(); i++ )
-        {
-            int temp=inventaire.verifier(plat.getRecette().get(i));
-            if(temp == -1){
+        for (int i = 0; i < plat.getRecette().size(); i++) {
+            int temp = inventaire.verifier(plat.getRecette().get(i));
+            if (temp == -1) {
                 //TODO changer état plat pour impossible
                 return false;
-            }
-            else {
+            } else {
                 liste[i][0] = temp;
                 liste[i][1] = plat.getRecette().get(i).getQuantite();
             }
         }
         //TODO changer état plat pour en préparation
-        Preparation(liste);
+        Preparation(liste, plat);
         return true;
     }
 }
