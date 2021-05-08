@@ -1,5 +1,8 @@
 package menufact;
 
+import ingredients.*;
+import ingredients.Fruit;
+
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
@@ -11,7 +14,18 @@ public class TestMenuFact02 {
 
     public static void main(String[] args) {
         boolean trace = true;
+        boolean testMaison= true;
 
+        if(testMaison){
+            IngredientFactory l_test = new IngredientFactory();
+            Ingredient l_InstanceTestViande = l_test.createingredient(TypeIngredient.VIANDE);
+            l_InstanceTestViande.setNom("Longe de porc");
+            l_InstanceTestViande.setDescription("Elle sont en train de degeler dans des condition par tres salubre!");
+            System.out.println(l_InstanceTestViande.getTypeIngredient().toString());
+            System.out.println(l_InstanceTestViande.getNom());
+            System.out.println(l_InstanceTestViande.getDescription());
+            return;
+        }
         TestMenuFact02 t = new TestMenuFact02();
 
         PlatAuMenu p1 = new PlatAuMenu(0,"PlatAuMenu0",10);

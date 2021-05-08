@@ -10,6 +10,8 @@ public class Menu {
     private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
 
+    
+
     public Menu(String description) {
         this.description = description;
     }

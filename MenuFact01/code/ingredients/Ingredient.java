@@ -1,5 +1,7 @@
 package ingredients;
 
+import ingredients.exceptions.IngredientException;
+
 public class Ingredient {
     private String nom;
     private String description;
@@ -27,5 +29,22 @@ public class Ingredient {
 
     public void setTypeIngredient(TypeIngredient typeIngredient) {
         this.typeIngredient = typeIngredient;
+    }
+
+    public Ingredient Ingredient (TypeIngredient typeIngredient) {
+        switch (typeIngredient) {
+            case EPICE:
+                return new Epice();
+            case FRUIT:
+                return new Fruit();
+            case LAITIER:
+                return new Laitier();
+            case LEGUME:
+                return new Legume();
+            case VIANDE:
+                return new Viande();
+            default:
+                return new Ingredient();
+        }
     }
 }

@@ -1,5 +1,5 @@
 package ingredients;
 
 public enum TypeIngredient {
-    FRUIT, LEGUME, VIANDE, LAITIER, EPICE
+    FRUIT, LEGUME, VIANDE, LAITIER, EPICE, DEFAULTs
 }
