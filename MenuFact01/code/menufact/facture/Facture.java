@@ -89,14 +89,14 @@ public class Facture {
      */
     public void payer()
     {
-       etat = FactureEtat.PAYEE;
+       etat = new Payer();
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
      */
     public void fermer()
     {
-       etat = FactureEtat.FERMEE;
+       etat = new Fermer();
     }
 
     /**
@@ -105,10 +105,10 @@ public class Facture {
      */
     public void ouvrir() throws FactureException
     {
-        if (etat == FactureEtat.PAYEE)
+        if (etat.getEtat() == "Payer")
             throw new FactureException("La facture ne peut pas être reouverte.");
         else
-            etat = FactureEtat.OUVERTE;
+            etat = new Ouverte();
     }
 
     /**
@@ -119,14 +119,13 @@ public class Facture {
     {
         return etat;
     }
-
     /**
      *
      * @param description la description de la Facture
      */
     public Facture(String description) {
         date = new Date();
-        etat = FactureEtat.OUVERTE;
+        etat = new Ouverte();
         courant = -1;
         this.description = description;
         ArrayList<Subscriber> subscriber = new ArrayList<Subscriber>();
@@ -139,7 +138,7 @@ public class Facture {
      */
     public void ajoutePlat(PlatChoisi p) throws FactureException
     {
-        if (etat == FactureEtat.OUVERTE)
+        if (etat.getEtat() == "Ouverte")
             platchoisi.add(p);
         else
             throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
