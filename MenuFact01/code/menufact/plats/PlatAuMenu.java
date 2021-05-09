@@ -10,11 +10,13 @@ public class PlatAuMenu {
     private String description;
     private double prix;
     private ArrayList<IngredientInventaire> recette = new ArrayList<IngredientInventaire>();
+    private PlatEtat etat;
 
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
         this.description = description;
         this.prix = prix;
+        this.etat=null;
     }
 
     public PlatAuMenu() {
@@ -55,5 +57,24 @@ public class PlatAuMenu {
     public  ArrayList<IngredientInventaire> getRecette() {
         return recette;
     }
-
+    public void commander()
+    {
+        etat = new Commande();
+    }
+    public void Preparer()
+    {
+        etat = new EnPreparation();
+    }
+    public void terminer()
+    {
+        etat = new Termine();
+    }
+    public void servir()
+    {
+        etat = new Servi();
+    }
+    public void impossible()
+    {
+        etat = new Impossible();
+    }
 }
