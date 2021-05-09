@@ -12,6 +12,7 @@ public class PlatAuMenu {
     private ArrayList<IngredientInventaire> recette = new ArrayList<IngredientInventaire>();
     private PlatEtat etat;
 
+    public double getProportion(){return 1;};
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
         this.description = description;

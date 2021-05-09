@@ -32,8 +32,9 @@ public class Facture {
             }
         }
     }
-    public void notifySubscriber(){
-
+    public void notifySubscriber(PlatChoisi l_plat)
+    {
+        Chef.getInstance().update(l_plat);
     }
     /**********************Constantes ************/
     private final double TPS = 0.05;
@@ -139,9 +140,15 @@ public class Facture {
     public void ajoutePlat(PlatChoisi p) throws FactureException
     {
         if (etat.getEtat() == "Ouverte")
+        {
+            p.getPlat().commander();
             platchoisi.add(p);
+            notifySubscriber(p);
+        }
         else
+        {
             throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
+        }
     }
 
     /**

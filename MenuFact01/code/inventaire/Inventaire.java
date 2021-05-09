@@ -19,14 +19,14 @@ public class Inventaire {
         }
         return instance;
     }
-    public void ajouter (IngredientInventaire IngredientAAjouter) throws IngredientException {
+    public void ajouter (IngredientInventaire IngredientAAjouter) {
         for(int i = 0;i<lesIngredients.size();i++)
         {
             if (lesIngredients.get(i).getIngredient().getNom() == IngredientAAjouter.getIngredient().getNom()) {
                 try {
                     lesIngredients.get(i).setQuantite(lesIngredients.get(i).getQuantite() + IngredientAAjouter.getQuantite());
                 } catch (IngredientException e) {
-                    throw e;
+                    //TODO regler si on met un truc negatif
                 }
                 return;
             }
