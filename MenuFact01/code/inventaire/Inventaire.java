@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 public class Inventaire {
     private static Inventaire instance;
-    private ArrayList<IngredientInventaire> lesIngredients = new ArrayList<IngredientInventaire>();
+    private ArrayList<IngredientInventaire> lesIngredients;
     private Inventaire()
     {
+        lesIngredients = new ArrayList<IngredientInventaire>();
     }
     public static Inventaire getInstance()
     {

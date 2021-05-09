@@ -2,26 +2,32 @@ package menufact.plats;
 
 import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
-
+import menufact.exceptions.PlatException;
 import java.util.ArrayList;
 
 public class PlatAuMenu {
     private int code;
     private String description;
     private double prix;
-    private ArrayList<IngredientInventaire> recette = new ArrayList<IngredientInventaire>();
+    private ArrayList<IngredientInventaire> recette;
     private PlatEtat etat;
 
-    public double getProportion(){return 1;};
-    public PlatAuMenu(int code, String description, double prix) {
+    public double getProportion()
+    {
+        return 1;
+    }
+    public PlatAuMenu(int code, String description, double prix) throws PlatException
+    {
+        if(code<0){throw new PlatException("code ne peut pas etre negatif");}
+        else if(prix<0){throw new PlatException("prix ne peut pas etre negatif");}
         this.code = code;
         this.description = description;
         this.prix = prix;
         this.etat=null;
+        recette = new ArrayList<IngredientInventaire>();
     }
 
-    public PlatAuMenu() {
-    }
+    public PlatAuMenu(){}
 
     @Override
     public String toString() {
@@ -32,30 +38,52 @@ public class PlatAuMenu {
                 "}\n";
     }
 
-    public int getCode() {
+    public int getCode()
+    {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setCode(int code) throws PlatException
+    {
+        if (code<0)
+        {
+            throw new PlatException("Le code du plat ne peut pas etre negatif");
+        }
+        else
+        {
+            this.code = code;
+        }
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public double getPrix() {
+    public double getPrix()
+    {
         return prix;
     }
 
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setPrix(double prix) throws PlatException
+    {
+
+        if (code<=0)
+        {
+            throw new PlatException("Le prix du plat ne peut pas etre negatif ou gratuit(on est cheap)");
+        }
+        else
+        {
+            this.prix = prix;
+        }
     }
-    public  ArrayList<IngredientInventaire> getRecette() {
+    public  ArrayList<IngredientInventaire> getRecette()
+    {
         return recette;
     }
     public void commander()

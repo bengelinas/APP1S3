@@ -8,11 +8,15 @@ import java.util.ArrayList;
 public class Menu {
     private String description;
     private int courant;
-    private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
+    private ArrayList<PlatAuMenu> plat;
 
     private static Menu menuInstance;
 
-    private Menu(String description) { this.description = description; }
+    private Menu(String description)
+    {
+        this.description = description;
+        plat = new ArrayList<PlatAuMenu>();
+    }
 
     public static Menu getInstance(String description)
     {
@@ -23,8 +27,12 @@ public class Menu {
     }
 
     void ajoute (PlatAuMenu p)
+
     {
-        plat.add(p);
+        if(p!=null)
+        {
+            plat.add(p);
+        }
     }
 
     public void position(int i)

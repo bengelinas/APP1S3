@@ -16,7 +16,7 @@ public class Facture {
     private Date date;
     private String description;
     private FactureEtat etat;
-    private ArrayList<PlatChoisi> platchoisi = new ArrayList<PlatChoisi>();
+    private ArrayList<PlatChoisi> platchoisi;
     private int courant;
     private Client client;
     private ArrayList<Subscriber> subscriber;
@@ -65,7 +65,8 @@ public class Facture {
      *
      * @return le total de la facture
      */
-    public double total(){
+    public double total()
+    {
         return sousTotal()+tps()+tvq();
     }
 
@@ -73,7 +74,8 @@ public class Facture {
      *
      * @return la valeur de la TPS
      */
-    private double tps(){
+    private double tps()
+    {
         return TPS*sousTotal();
     }
 
@@ -81,16 +83,23 @@ public class Facture {
      *
      * @return la valeur de la TVQ
      */
-    private  double tvq(){
+    private  double tvq()
+    {
         return TVQ*(TPS+1)*sousTotal();
     }
 
     /**
      * Permet de chager l'état de la facture à PAYEE
      */
-    public void payer()
+    public void payer() throws FactureException
     {
-       etat = new Payer();
+        if (etat.getEtat() == "Fermer")
+        {
+            etat = new Payer();
+        }else
+        {
+            throw new FactureException("La facture doit etre Fermer avant de payer");
+        }
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
@@ -124,12 +133,15 @@ public class Facture {
      *
      * @param description la description de la Facture
      */
-    public Facture(String description) {
+    public Facture(String description)
+    {
         date = new Date();
         etat = new Ouverte();
+        platchoisi = new ArrayList<PlatChoisi>();
         courant = -1;
         this.description = description;
-        ArrayList<Subscriber> subscriber = new ArrayList<Subscriber>();
+        subscriber = new ArrayList<Subscriber>();
+        subscribe(Chef.getInstance());
     }
 
     /**
@@ -156,7 +168,8 @@ public class Facture {
      * @return le contenu de la facture en chaîne de caracteres
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "menufact.facture.Facture{" +
                 "date=" + date +
                 ", description='" + description + '\'' +

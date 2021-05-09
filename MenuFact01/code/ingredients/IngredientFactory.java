@@ -1,8 +1,11 @@
 package ingredients;
 
+import ingredients.exceptions.IngredientException;
+
 public class IngredientFactory {
     public IngredientFactory(){}
-    public Ingredient createingredient (TypeIngredient typeIngredient) {
+    public Ingredient createingredient (TypeIngredient typeIngredient) throws IngredientException
+    {
         switch (typeIngredient) {
             case EPICE:
                 return new Epice();
@@ -15,7 +18,7 @@ public class IngredientFactory {
             case VIANDE:
                 return new Viande();
             default:
-                return new Ingredient();
+                throw new IngredientException("ingredient invalide");
         }
     }
 }
