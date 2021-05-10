@@ -10,6 +10,8 @@ import menufact.facture.Chef;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatEnfant;
+import menufact.plats.PlatSante;
+
 
 public class TestMenuFactUnitaire {
     public static void main(String[] args) {
@@ -587,6 +589,59 @@ public class TestMenuFactUnitaire {
         catch(Exception e){System.out.println(e);}
 
         /*--------------test Plat sante---------*/
+        System.out.println("=======================================================================");
+        System.out.println("Les test de plats sante initialise quatre plat sante,");
+        System.out.println("dont trois vont revenir invalide car sont rentree des valeurs negatives");
+        System.out.println("=======================================================================");
+        PlatSante l_ps1=null;
+        PlatSante l_ps2=null;
+        PlatSante l_ps3=null;
+        PlatSante l_ps4=null;
+        System.out.println("Voici un plat valide:");
+        try {
+            l_ps3 = new PlatSante(1, "Plat Sante numero 1",1000,1500,50,50000);
+        }
+        catch(Exception e){System.out.println(e);}
+
+        System.out.println();
+        System.out.println(l_ps3.toString());
+
+        System.out.println("Voici un plat invalide:");
+        try {
+            l_ps1 = new PlatSante(1, "Plat Sante numero 1",1000,-500,50,50000);
+        }
+        catch(Exception e){System.out.println(e);}
+
+
+        System.out.println("Voici un plat invalide:");
+        try {
+            l_ps2 = new PlatSante(1, "Plat Sante numero 1",1000,1500,-50,50000);
+        }
+        catch(Exception e){System.out.println(e);}
+
+        System.out.println("Voici un plat invalide:");
+        try {
+            l_ps4 = new PlatSante(1, "Plat Sante numero 1",1000,1500,50,-50000);
+        }
+        catch(Exception e){System.out.println(e);}
+
+        System.out.println();System.out.println();
+
+        System.out.println("Essayon d'afficher un plat sante invalide");
+        try{
+            System.out.println(l_ps1.toString());
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("Essayon d'afficher un plat sante valide");
+        try{
+            System.out.println(l_ps3.toString());
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("Essayon d'afficher ses attribut individuellement");
+        System.out.print("Cholesterol:");
+        System.out.println(l_ps3.getChol());
+        System.out.print("Kcal:");
+        System.out.println(l_ps3.getKcal());
+        System.out.print("Gras:");
+        System.out.println(l_ps3.getGras());
 
         /*--------------test Plat enfant----------*/
         PlatEnfant pe1=null;
