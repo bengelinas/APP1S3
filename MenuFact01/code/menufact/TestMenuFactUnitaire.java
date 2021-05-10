@@ -539,8 +539,26 @@ public class TestMenuFactUnitaire {
             System.out.println(client2.getNumeroCarteCredit());}
             catch(Exception e){System.out.println(e);}
 
-
+        try {
+            System.out.println(client3.toString());}
+        catch(Exception e){System.out.println(e);}
         /*--------------test Menu---------------*/
+        Menu.getInstance("le meilleur menu");
+        try {
+            System.out.println(Menu.getInstance("le pire menu").toString());}
+        catch(Exception e){System.out.println(e);}
+        Menu menu=Menu.getInstance("Le pire menu");
+        try {
+            menu.positionPrecedente();}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            menu.positionSuivante();}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            menu.ajoute(p1);}
+        catch(Exception e){System.out.println(e);}
 
         /*--------------test Plat sante---------*/
 
