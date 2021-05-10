@@ -70,21 +70,22 @@ public class PlatAuMenu {
         return prix;
     }
 
-    public void setPrix(double prix) throws PlatException
-    {
+    public void setPrix(double prix) throws PlatException {
 
-        if (code<=0)
-        {
+        if (prix <= 0) {
             throw new PlatException("Le prix du plat ne peut pas etre negatif ou gratuit(on est cheap)");
-        }
-        else
-        {
+        } else {
             this.prix = prix;
         }
     }
+    public PlatEtat getEtat(){return etat;}
     public  ArrayList<IngredientInventaire> getRecette()
     {
         return recette;
+    }
+    public void ajouterIngredient(IngredientInventaire ingredient)
+    {
+        recette.add(ingredient);
     }
     public void commander()
     {

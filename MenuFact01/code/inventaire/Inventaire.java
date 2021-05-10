@@ -20,14 +20,14 @@ public class Inventaire {
         }
         return instance;
     }
-    public void ajouter (IngredientInventaire IngredientAAjouter) {
+    public void ajouter (IngredientInventaire IngredientAAjouter) throws IngredientException {
         for(int i = 0;i<lesIngredients.size();i++)
         {
             if (lesIngredients.get(i).getIngredient().getNom() == IngredientAAjouter.getIngredient().getNom()) {
                 try {
                     lesIngredients.get(i).setQuantite(lesIngredients.get(i).getQuantite() + IngredientAAjouter.getQuantite());
                 } catch (IngredientException e) {
-                    //TODO regler si on met un truc negatif
+                    throw new IngredientException("Il n'est pas possible d'avoir une quantité negative");
                 }
                 return;
             }
@@ -43,8 +43,7 @@ public class Inventaire {
         }
         return -1;
     }
-    public void retirer(int Index, int QuantiteAEnlever)
-    {
+    public void retirer(int Index, int QuantiteAEnlever)  {
         lesIngredients.get(Index).retirerQuantite(QuantiteAEnlever);
     }
 }

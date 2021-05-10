@@ -13,8 +13,7 @@ public class Chef implements Subscriber{
         inventaire = Inventaire.getInstance();
     }
 
-    @Override public void update(PlatChoisi l_plat)
-    {
+    @Override public void update(PlatChoisi l_plat)  {
         for(int i=0;i< l_plat.getQuantite();i++){
             verifier(l_plat.getPlat());
         }
@@ -26,7 +25,7 @@ public class Chef implements Subscriber{
         }
         return instance;
     }
-    private void Preparation(int[][] liste, PlatAuMenu PlatEnPreparation) {
+    private void Preparation(int[][] liste, PlatAuMenu PlatEnPreparation)  {
         PlatEnPreparation.terminer();
         for (int i = 0; i < liste.length; i++) {
             inventaire.retirer(liste[i][0], liste[i][1]);
@@ -34,8 +33,7 @@ public class Chef implements Subscriber{
         PlatEnPreparation.servir();
     }
 
-    private boolean verifier(PlatAuMenu plat)
-    {
+    private boolean verifier(PlatAuMenu plat)  {
         int[][] liste = new int[0][2];
         for (int i = 0; i < plat.getRecette().size(); i++) {
             if(plat.getClass()== PlatEnfant.class){

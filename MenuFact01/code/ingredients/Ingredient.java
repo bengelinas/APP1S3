@@ -2,7 +2,8 @@ package ingredients;
 
 import ingredients.exceptions.IngredientException;
 
-public class Ingredient extends Object{
+public class
+Ingredient extends Object{
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
