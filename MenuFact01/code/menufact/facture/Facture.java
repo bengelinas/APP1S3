@@ -74,7 +74,7 @@ public class Facture {
      *
      * @return la valeur de la TPS
      */
-    private double tps()
+    protected double tps()
     {
         return TPS*sousTotal();
     }
@@ -83,7 +83,7 @@ public class Facture {
      *
      * @return la valeur de la TVQ
      */
-    private  double tvq()
+    protected double tvq()
     {
         return TVQ*(TPS+1)*sousTotal();
     }
@@ -93,13 +93,14 @@ public class Facture {
      */
     public void payer() throws FactureException
     {
-        if (etat.getEtat() == "Fermer")
+        /*if (etat.getEtat() == "Fermer")
         {
             etat = new Payer();
         }else
         {
             throw new FactureException("La facture doit etre Fermer avant de payer");
-        }
+        }*/
+        etat = new Payer();
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
@@ -115,10 +116,12 @@ public class Facture {
      */
     public void ouvrir() throws FactureException
     {
-        if (etat.getEtat() == "Payer")
+        /*if (etat.getEtat() == "Payer")
             throw new FactureException("La facture ne peut pas être reouverte.");
         else
-            etat = new Ouverte();
+            etat = new Ouverte();*/
+
+        etat = new Ouverte();
     }
 
     /**
@@ -129,6 +132,7 @@ public class Facture {
     {
         return etat;
     }
+    public void setEtat(FactureEtat newEtat) { etat = newEtat; }
     /**
      *
      * @param description la description de la Facture
@@ -151,7 +155,7 @@ public class Facture {
      */
     public void ajoutePlat(PlatChoisi p) throws FactureException
     {
-        if (etat.getEtat() == "Ouverte")
+        /*if (etat.getEtat() == "Ouverte")
         {
             p.getPlat().commander();
             platchoisi.add(p);
@@ -160,7 +164,12 @@ public class Facture {
         else
         {
             throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
-        }
+        }*/
+
+        p.getPlat().commander();
+        platchoisi.add(p);
+        notifySubscriber(p);
+
     }
 
     /**
