@@ -6,7 +6,9 @@ import ingredients.IngredientInventaire;
 import ingredients.TypeIngredient;
 import inventaire.Inventaire;
 import menufact.exceptions.PlatException;
+import menufact.facture.Chef;
 import menufact.plats.PlatAuMenu;
+import menufact.plats.PlatChoisi;
 
 public class TestMenuFactUnitaire {
     public static void main(String[] args) {
@@ -342,7 +344,7 @@ public class TestMenuFactUnitaire {
         }
 
         try {
-            ii1.setQuantite(100);
+            ii1.setQuantite(1000);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -362,7 +364,7 @@ public class TestMenuFactUnitaire {
             System.out.println(e);
         }
         try {
-            ii1.retirerQuantite(500);
+            ii1.retirerQuantite(50000);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -466,5 +468,88 @@ public class TestMenuFactUnitaire {
         try {
             System.out.println(Inventaire.getInstance().verifier(ii2));
         } catch (Exception e){System.out.println(e);}
-    }
+/*--------------- test plat choisi ---------------*/
+
+        PlatChoisi pc1= null;
+        PlatChoisi pc2= null;
+        try {
+            pc1= new PlatChoisi(p1, 2);
+        } catch (Exception e){System.out.println(e);}
+
+        try {
+            pc2= new PlatChoisi(p1, -1);
+         } catch (Exception e){System.out.println(e);}
+
+        try {
+            System.out.println(pc1.getPlat());
+        } catch (Exception e){System.out.println(e);}
+        try {
+            pc1.setQuantite(1);
+        } catch (Exception e){System.out.println(e);}
+
+        try {
+            System.out.println(pc1.getQuantite());
+        } catch (Exception e){System.out.println(e);}
+        /*--------------test Client----------------*/
+        Client client1= null;
+        Client client2= null;
+        Client client3= null;
+        try {
+            client1= new Client(1,"Phil","123412341234");
+        } catch (Exception e){System.out.println(e);}
+        try {
+            client2= new Client(2,"Ben","456456456");
+        } catch (Exception e){System.out.println(e);}
+        try {
+            client3= new Client(3,"Domingo","789789789");
+        } catch (Exception e){System.out.println(e);}
+        try {
+            System.out.println(client1.getIdClient());
+        } catch (Exception e){System.out.println(e);}
+        try {
+            System.out.println(client1.getNom());
+        } catch (Exception e){System.out.println(e);}
+        try {
+            System.out.println(client1.getNumeroCarteCredit());
+
+        } catch (Exception e){System.out.println(e);}
+        try {
+            client2.setIdClient(4);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            client2.setNom("Chad McCool");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            client2.setNumeroCarteCredit("over 9000");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            System.out.println(client2.getIdClient());
+        } catch (Exception e){System.out.println(e);}
+        try {
+            System.out.println(client2.getNom());
+        } catch (Exception e){System.out.println(e);}
+        try {
+            System.out.println(client2.getNumeroCarteCredit());}
+            catch(Exception e){System.out.println(e);}
+
+
+        /*--------------test Menu---------------*/
+
+        /*--------------test Plat sante---------*/
+
+        /*--------------test Plat enfant----------*/
+
+
+
+        /*----------------test chef---------------*/
+        Chef.getInstance();
+        /*---------------test Facture--------------*/
+}
 }
