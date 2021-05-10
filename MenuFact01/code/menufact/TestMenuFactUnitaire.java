@@ -9,6 +9,7 @@ import menufact.exceptions.PlatException;
 import menufact.facture.Chef;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import menufact.plats.PlatEnfant;
 
 public class TestMenuFactUnitaire {
     public static void main(String[] args) {
@@ -469,7 +470,7 @@ public class TestMenuFactUnitaire {
             System.out.println(Inventaire.getInstance().verifier(ii2));
         } catch (Exception e){System.out.println(e);}
 /*--------------- test plat choisi ---------------*/
-
+        System.out.println("test plat choisi");
         PlatChoisi pc1= null;
         PlatChoisi pc2= null;
         try {
@@ -491,6 +492,7 @@ public class TestMenuFactUnitaire {
             System.out.println(pc1.getQuantite());
         } catch (Exception e){System.out.println(e);}
         /*--------------test Client----------------*/
+        System.out.println("test client");
         Client client1= null;
         Client client2= null;
         Client client3= null;
@@ -543,6 +545,7 @@ public class TestMenuFactUnitaire {
             System.out.println(client3.toString());}
         catch(Exception e){System.out.println(e);}
         /*--------------test Menu---------------*/
+        System.out.println("test menu");
         Menu.getInstance("le meilleur menu");
         try {
             System.out.println(Menu.getInstance("le pire menu").toString());}
@@ -560,11 +563,57 @@ public class TestMenuFactUnitaire {
             menu.ajoute(p1);}
         catch(Exception e){System.out.println(e);}
 
+        try {
+            menu.ajoute(p1);}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            System.out.println(menu.platCourant());}
+        catch(Exception e){System.out.println(e);}
+        try {
+            menu.positionSuivante();}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            System.out.println(menu.platCourant());}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            menu.position(0);}
+        catch(Exception e){System.out.println(e);}
+
+        try {
+            System.out.println(menu.platCourant());}
+        catch(Exception e){System.out.println(e);}
+
         /*--------------test Plat sante---------*/
 
         /*--------------test Plat enfant----------*/
+        PlatEnfant pe1=null;
+        PlatEnfant pe2=null;
 
-
+        try {
+            pe1 = new PlatEnfant(0, "PlatAuMenu0", 10,0.5);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            pe2 = new PlatEnfant(0, "PlatAuMenu0", 10,-0.5);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println(pe1.toString());}
+        catch(Exception e){System.out.println(e);}
+        try {
+            System.out.println(pe2.toString());}
+        catch(Exception e){System.out.println(e);}
+        try {
+            System.out.println(pe1.getProportion());}
+        catch(Exception e){System.out.println(e);}
+        try {
+            System.out.println(pe2.getProportion());}
+        catch(Exception e){System.out.println(e);}
 
         /*----------------test chef---------------*/
         Chef.getInstance();
