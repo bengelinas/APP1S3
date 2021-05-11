@@ -41,15 +41,6 @@ public class Inventaire {
         IngredientAAjouter.changerPlat(-1);
         lesIngredients.add(IngredientAAjouter);
     }
-    public int verifier (Ingredient ingredient, int Quantite) {
-        for(int i=0; i< lesIngredients.size(); i++)
-        {
-            if(ingredient.getNom()==lesIngredients.get(i).getIngredient().getNom() && ingredient.getTypeIngredient()==lesIngredients.get(i).getIngredient().getTypeIngredient() && lesIngredients.get(i).getQuantite() >= Quantite) {
-                return i;
-            }
-        }
-        return -1;
-    }
     public int verifier (IngredientInventaire ingredientInventaire) {
         for(int i=0; i< lesIngredients.size(); i++)
         {
@@ -59,6 +50,16 @@ public class Inventaire {
         }
         return -1;
     }
+    public int verifier (Ingredient ingredient, int Quantite) {
+        for(int i=0; i< lesIngredients.size(); i++)
+        {
+            if(ingredient.getNom()==lesIngredients.get(i).getIngredient().getNom() && ingredient.getTypeIngredient()==lesIngredients.get(i).getIngredient().getTypeIngredient() && lesIngredients.get(i).getQuantite() >= Quantite) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void retirer(int Index, int QuantiteAEnlever)  {
         lesIngredients.get(Index).retirerQuantite(QuantiteAEnlever);
     }

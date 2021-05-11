@@ -14,7 +14,7 @@ public class IngredientInventaire {
             this.quantite = quantite;
             this.plat=0;
     }
-    public void changerPlat(int etat){this.plat=etat;}
+    public void changerPlat(int etat){this.plat=etat;};
     public int getPlat(){return this.plat;}
     public Ingredient getIngredient() {
         return ingredient;

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9f6e9279-f74c-4dc4-a3f7-62ca04d82734" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuFact01/code/menufact/TestMenuFactUnitaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/menufact/TestMenuFactUnitaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFact01/code/ingredients/IngredientInventaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/ingredients/IngredientInventaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFact01/code/inventaire/Inventaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/inventaire/Inventaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Chef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Facture.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Facture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Fermer.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFact01/code/menufact/facture/Fermer.java" afterDir="false" />
     </list>
@@ -72,11 +74,22 @@
       <updated>1620571215815</updated>
       <workItem from="1620571220600" duration="514000" />
       <workItem from="1620571772266" duration="134000" />
-      <workItem from="1620689635412" duration="4133000" />
+      <workItem from="1620689635412" duration="5565000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MenuFact01/code/menufact/facture/Chef.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

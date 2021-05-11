@@ -38,7 +38,6 @@ public class Chef implements Subscriber{
         for (int i = 0; i < plat.getRecette().size(); i++) {
             if(plat.getClass()== PlatEnfant.class){
                 int temp = inventaire.verifier(plat.getRecette().get(i).getIngredient(),(int)(plat.getRecette().get(i).getQuantite() * (plat.getProportion())));
-
                 if (temp == -1) {
                     plat.impossible();
                     return false;
@@ -46,8 +45,6 @@ public class Chef implements Subscriber{
                     liste[i][0] = temp;
                     liste[i][1] = (int)(plat.getRecette().get(i).getQuantite() * (plat.getProportion()));;
                 }
-
-
             }
             else {
                 int temp = inventaire.verifier(plat.getRecette().get(i));
