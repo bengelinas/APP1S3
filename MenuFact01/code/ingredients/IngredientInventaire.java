@@ -5,15 +5,17 @@ import ingredients.exceptions.IngredientException;
 public class IngredientInventaire {
     private Ingredient ingredient;
     private int quantite;
-
+    private int plat;
     public IngredientInventaire(Ingredient ingredient, int quantite) throws IngredientException {
         this.ingredient = ingredient;
         if (quantite < 0)
             throw new IngredientException("Il n'est pas possible d'avoir une quantité negative");
         else
             this.quantite = quantite;
+            this.plat=0;
     }
-
+    public void changerPlat(int etat){this.plat=etat;}
+    public int getPlat(){return this.plat;}
     public Ingredient getIngredient() {
         return ingredient;
     }
@@ -46,6 +48,6 @@ public class IngredientInventaire {
     @Override
     public String toString()
     {
-        return "ingredient: "+ingredient.getNom().toString()+"quantite: "+ quantite;
+        return "ingredient: "+ingredient.getNom().toString()+" quantite: "+ quantite;
     }
 }

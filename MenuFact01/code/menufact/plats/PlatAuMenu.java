@@ -83,8 +83,12 @@ public class PlatAuMenu {
     {
         return recette;
     }
-    public void ajouterIngredient(IngredientInventaire ingredient)
-    {
+    public void ajouterIngredient(IngredientInventaire ingredient) throws PlatException {
+        if (ingredient.getPlat()==-1) {
+            throw new PlatException("On ne peut assigne un ingredient de l'inventaire");
+        }
+
+        ingredient.changerPlat(1);
         recette.add(ingredient);
     }
     public void commander()

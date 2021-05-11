@@ -327,6 +327,11 @@ public class TestMenuFactUnitaire {
         } catch (Exception e) {
             System.out.println(e);
         }
+        try {
+            ii3 = new IngredientInventaire(i1, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         /*-----------test getter setter------------------*/
         System.out.println("test getter setter");
@@ -423,7 +428,7 @@ public class TestMenuFactUnitaire {
             System.out.println(e);
         }
         try {
-            p1.ajouterIngredient(ii3);
+            p1.ajouterIngredient(ii1);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -446,11 +451,12 @@ public class TestMenuFactUnitaire {
         /*-------------test inventaire-----------*/
         System.out.println("test inventaire");
         Inventaire.getInstance();
+
         try {
-            Inventaire.getInstance().ajouter(ii1);
+            Inventaire.getInstance().ajouter(ii3);
         } catch (Exception e){System.out.println(e);}
         try {
-            Inventaire.getInstance().ajouter(ii1);
+            Inventaire.getInstance().ajouter(ii3);
         } catch (Exception e){System.out.println(e);}
         try {
             Inventaire.getInstance().retirer(0,25);
@@ -671,7 +677,232 @@ public class TestMenuFactUnitaire {
         catch(Exception e){System.out.println(e);}
 
         /*----------------test chef---------------*/
-        Chef.getInstance();
+        Chef chef=Chef.getInstance();
+        Ingredient ingredient_chef1=null;
+        Ingredient ingredient_chef2=null;
+        Ingredient ingredient_chef3=null;
+        Ingredient ingredient_chef4=null;
+        Ingredient ingredient_chef5=null;
+        try {
+            ingredient_chef1=factory.createingredient(TypeIngredient.VIANDE);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef2=factory.createingredient(TypeIngredient.LEGUME);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef3=factory.createingredient(TypeIngredient.FRUIT);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef4=factory.createingredient(TypeIngredient.LAITIER);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef5=factory.createingredient(TypeIngredient.EPICE);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            ingredient_chef1.setNom("poulet");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef1.setDescription("cuisse");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef2.setNom("patate");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef2.setDescription("jaune");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef3.setNom("pomme");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef3.setDescription("rouge");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef4.setNom("creme");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef4.setDescription("35%");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef5.setNom("curcuma");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_chef5.setDescription("indien");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        IngredientInventaire ingredient_inventaire1=null;
+        IngredientInventaire ingredient_inventaire2=null;
+        IngredientInventaire ingredient_inventaire3=null;
+        IngredientInventaire ingredient_inventaire4=null;
+        IngredientInventaire ingredient_inventaire5=null;
+        try {
+            ingredient_inventaire1 = new IngredientInventaire(ingredient_chef1, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_inventaire2 = new IngredientInventaire(ingredient_chef2, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_inventaire3 = new IngredientInventaire(ingredient_chef3, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_inventaire4 = new IngredientInventaire(ingredient_chef4, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_inventaire5 = new IngredientInventaire(ingredient_chef5, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        IngredientInventaire ingredient_plat1=null;
+        IngredientInventaire ingredient_plat2=null;
+        IngredientInventaire ingredient_plat3=null;
+        IngredientInventaire ingredient_plat4=null;
+        IngredientInventaire ingredient_plat5=null;
+        try {
+            ingredient_plat1 = new IngredientInventaire(ingredient_chef1, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_plat2 = new IngredientInventaire(ingredient_chef2, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_plat3 = new IngredientInventaire(ingredient_chef3, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_plat4 = new IngredientInventaire(ingredient_chef4, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            ingredient_plat5 = new IngredientInventaire(ingredient_chef5, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        Inventaire inventaire=Inventaire.getInstance();
+        try {
+            Inventaire.getInstance().ajouter(ingredient_inventaire1);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            Inventaire.getInstance().ajouter(ingredient_inventaire2);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            Inventaire.getInstance().ajouter(ingredient_inventaire3);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            Inventaire.getInstance().ajouter(ingredient_inventaire4);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            Inventaire.getInstance().ajouter(ingredient_inventaire5);
+        } catch (Exception e){System.out.println(e);}
+
+        PlatAuMenu plat_chef = null;
+        PlatSante plat_sante = null;
+        PlatEnfant plat_enfant = null;
+        try {
+            plat_chef = new PlatAuMenu(0, "PlatChefNormal", 10);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            plat_sante = new PlatSante(0, "PlatChefSante", 20,10,10,10);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            plat_enfant = new PlatEnfant(0, "PlatChefEnfant", 10,0.5);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            plat_chef.ajouterIngredient(ingredient_plat1);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            plat_sante.ajouterIngredient(ingredient_plat2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            plat_enfant.ajouterIngredient(ingredient_plat3);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        PlatChoisi plat_chef_choisi=null;
+        PlatChoisi plat_sante_choisi=null;
+        PlatChoisi plat_enfant_choisi=null;
+
+        try {
+            plat_chef_choisi= new PlatChoisi(plat_chef, 1);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            plat_sante_choisi= new PlatChoisi(plat_sante, 1);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            plat_enfant_choisi= new PlatChoisi(plat_enfant, 1);
+        } catch (Exception e){System.out.println(e);}
+        System.out.println("inventaire plein");
+        System.out.println(inventaire.toString());
+        /*---------test plat normal------------*/
+        System.out.println("plat normal");
+        chef.update(plat_chef_choisi);
+        System.out.println(inventaire.toString());
+        /*---------test plat sante----------------*/
+        System.out.println("plat sante");
+        chef.update(plat_sante_choisi);
+        System.out.println(inventaire.toString());
+        /*---------test plat Enfant----------------*/
+        System.out.println("plat enfant");
+        chef.update(plat_enfant_choisi);
+        System.out.println(inventaire.toString());
+        /*----------deuxieme test plat enfant-------*/
+        System.out.println("plat enfant 2");
+        chef.update(plat_enfant_choisi);
+        System.out.println(inventaire.toString());
+        /*-----------test plat impossible car pas assez d'ingredient---------*/
+
         /*---------------test Facture--------------*/
 }
 }
