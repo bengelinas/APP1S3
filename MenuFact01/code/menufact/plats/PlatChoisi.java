@@ -7,9 +7,13 @@ public class PlatChoisi {
     private PlatAuMenu plat;
     private int quantite;
 
-    public PlatChoisi(PlatAuMenu plat, int quantite) throws PlatException
+    public PlatChoisi(PlatAuMenu platrecu, int quantite) throws PlatException
     {
-        this.plat = plat;
+        plat=new PlatAuMenu(platrecu.getCode(), platrecu.getDescription(), platrecu.getPrix());
+        for(int i=0; i<platrecu.getRecette().size();i++)
+        {
+            plat.ajouterIngredient(platrecu.getRecette().get(i));
+        }
         if(quantite<0){throw new PlatException("La quantite ne doit pas etre negative");};
         this.quantite = quantite;
     }

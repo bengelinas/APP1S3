@@ -903,7 +903,7 @@ public class TestMenuFactUnitaire {
         PlatChoisi plat_chef_choisi=null;
         PlatChoisi plat_sante_choisi=null;
         PlatChoisi plat_enfant_choisi=null;
-
+        PlatChoisi plat_impossible_choisi=null;
         try {
             plat_chef_choisi= new PlatChoisi(plat_chef, 1);
         } catch (Exception e){System.out.println(e);}
@@ -913,28 +913,49 @@ public class TestMenuFactUnitaire {
         try {
             plat_enfant_choisi= new PlatChoisi(plat_enfant, 1);
         } catch (Exception e){System.out.println(e);}
+        try {
+            plat_impossible_choisi= new PlatChoisi(plat_chef, 1);
+        } catch (Exception e){System.out.println(e);}
         System.out.println("inventaire plein");
         System.out.println(inventaire.toString());
         /*---------test plat normal------------*/
         System.out.println("plat normal");
+        try {
         chef.update(plat_chef_choisi);
+        } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
+        System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*---------test plat sante----------------*/
         System.out.println("plat sante");
+        try {
         chef.update(plat_sante_choisi);
+        } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
+        System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*---------test plat Enfant----------------*/
         System.out.println("plat enfant");
+        try {
         chef.update(plat_enfant_choisi);
+        } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
+        System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*----------deuxieme test plat enfant-------*/
         System.out.println("plat enfant 2");
+        try {
         chef.update(plat_enfant_choisi);
+        } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
+        System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*-----------test plat impossible car pas assez d'ingredient---------*/
-
+        System.out.println("plat impossible");
+        try {
+        chef.update(plat_impossible_choisi);
+        } catch (Exception e){System.out.println(e);}
+        System.out.println(inventaire.toString());
+        System.out.println(plat_chef_choisi.getPlat().getEtat());
+        System.out.println(plat_impossible_choisi.getPlat().getEtat());
         /*---------------test Facture--------------*/
         Facture l_f1 = new Facture("Facture de test numero 1");
-
+        
 }
 }
