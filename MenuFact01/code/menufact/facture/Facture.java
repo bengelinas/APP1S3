@@ -23,9 +23,18 @@ public class Facture {
     private ArrayList<Subscriber> subscriber;
 
     /**********************Abonnements ************/
+    /**
+     * Permet d'enregistré le Chef dans la liste comme une personne à être notifié.
+     * @param s La personne notifié
+     */
     public void subscribe(Subscriber s ){
         subscriber.add(s);
     }
+
+    /**
+     * Enleve une personne de la liste à être notifié.
+     * @param s La personne notifié
+     */
     public void unsubscribe(Subscriber s){
         for(int i=0; i< subscriber.size() -1; i++){
             if(subscriber.get(i) == s){
@@ -33,6 +42,11 @@ public class Facture {
             }
         }
     }
+
+    /**
+     * Notifie les personnes dans la liste, que PlatChoisi a été ajouté à la facture.
+     * @param l_plat Le PlatChoisi ajouté à la facture.
+     */
     public void notifySubscriber(PlatChoisi l_plat)
     {
         Chef.getInstance().update(l_plat);
@@ -134,6 +148,11 @@ public class Facture {
     {
         return etat;
     }
+
+    /**
+     * Permet de changer l'état de la Facture.
+     * @param newEtat Le nouvel état de la Facture.
+     */
     public void setEtat(FactureEtat newEtat) { etat = newEtat; }
     /**
      *
@@ -221,17 +240,34 @@ public class Facture {
         return factureGenere;
     }
 
+    /**
+     *
+     * @return Le Client du moment
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     *
+     * @return La Date du moment
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     *
+     * @return La description de la facture
+     */
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Ajoute un plat à la facture
+     * @param p Le PlatChoisi
+     */
     public void addPlat(PlatChoisi p)
     {
         platchoisi.add(p);

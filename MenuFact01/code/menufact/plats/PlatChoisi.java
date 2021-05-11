@@ -7,6 +7,12 @@ public class PlatChoisi {
     private PlatAuMenu plat;
     private int quantite;
 
+    /**
+     * Instanciation d'un plat choisi
+     * @param platrecu Un plat au menu
+     * @param quantite La quantité de plat au menu choisi
+     * @throws PlatException Ne peut pas avoir de quantité négative
+     */
     public PlatChoisi(PlatAuMenu platrecu, int quantite) throws PlatException
     {
         if(platrecu.getClass()==PlatEnfant.class){
@@ -31,11 +37,20 @@ public class PlatChoisi {
                 '}';
     }
 
+    /**
+     * Retourne la quantité
+     * @return quantité
+     */
     public int getQuantite()
     {
         return quantite;
     }
 
+    /**
+     * Envoi une quantité demandé
+     * @param quantite Quantité demandé
+     * @throws PlatException La quantité ne peut pas être négative
+     */
     public void setQuantite(int quantite) throws PlatException
     {
         if (quantite<0)
@@ -49,6 +64,10 @@ public class PlatChoisi {
 
     }
 
+    /**
+     * Retourne le plat au menu
+     * @return Plat au menu
+     */
     public PlatAuMenu getPlat()
     {
         return plat;

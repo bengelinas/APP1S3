@@ -16,6 +16,11 @@ public class Inventaire {
     {
         lesIngredients = new ArrayList<IngredientInventaire>();
     }
+
+    /**
+     * Implémentation du Singleton
+     * @return L'instance de l'inventaire
+     */
     public static Inventaire getInstance()
     {
         if (instance == null) {
@@ -23,6 +28,12 @@ public class Inventaire {
         }
         return instance;
     }
+
+    /**
+     * Ajouter un nouveau sorte d'ingrédient
+     * @param IngredientAAjouter Un ingrédient inventaire qui permet de garder le nombre d'un ingrédient dans l'inventaire
+     * @throws IngredientException
+     */
     public void ajouter (IngredientInventaire IngredientAAjouter) throws IngredientException {
         if(IngredientAAjouter.getPlat()==1){
             throw new IngredientException("Impossible d'utiliser un ingredient deja assigne");
@@ -41,6 +52,12 @@ public class Inventaire {
         IngredientAAjouter.changerPlat(-1);
         lesIngredients.add(IngredientAAjouter);
     }
+
+    /**
+     * Permet de vérifier qu'il y a au moins la quantité demandé d'un ingrédient dans l'inventaire
+     * @param ingredientInventaire Type d'ingrédient et la quantité à demander
+     * @return La position dans l'inventaire de l'ingrédient en question ou -1 si il n'y a pas d'ingrédient n'en contient pas assez
+     */
     public int verifier (IngredientInventaire ingredientInventaire) {
         for(int i=0; i< lesIngredients.size(); i++)
         {
@@ -50,6 +67,13 @@ public class Inventaire {
         }
         return -1;
     }
+
+    /**
+     * Une autre façon de faire une demande à inventaire
+     * @param ingredient Type d'ingrédient
+     * @param Quantite la quantité à demander
+     * @return La position dans l'inventaire de l'ingrédient en question ou -1 si il n'y a pas d'ingrédient n'en contient pas assez
+     */
     public int verifier (Ingredient ingredient, int Quantite) {
         for(int i=0; i< lesIngredients.size(); i++)
         {
@@ -60,6 +84,11 @@ public class Inventaire {
         return -1;
     }
 
+    /**
+     * Retirer la quantité demander d'une certaine sorte d'ingrédient
+     * @param Index La position dans l'inventaire, on demande l'index pour s'assurer que le programme est fait une vérification avant de retirer
+     * @param QuantiteAEnlever La quantité à enlever
+     */
     public void retirer(int Index, int QuantiteAEnlever)  {
         lesIngredients.get(Index).retirerQuantite(QuantiteAEnlever);
     }
