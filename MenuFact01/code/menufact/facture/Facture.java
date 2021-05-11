@@ -99,14 +99,16 @@ public class Facture {
      */
     public void payer() throws FactureException
     {
-        etat = new Payer();
+
+        etat.payer();
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
      */
-    public void fermer()
+    public void fermer() throws FactureException
     {
-       etat = new Fermer();
+
+       etat.fermer();
     }
 
     /**
@@ -120,7 +122,8 @@ public class Facture {
         else
             etat = new Ouverte();*/
 
-        etat = new Ouverte();
+
+        etat.ouvrir();
     }
 
     /**
@@ -139,7 +142,7 @@ public class Facture {
     public Facture(String description)
     {
         date = new Date();
-        etat = new Ouverte();
+        etat = new Ouverte(this);
         platchoisi = new ArrayList<PlatChoisi>();
         courant = -1;
         this.description = description;
@@ -165,9 +168,7 @@ public class Facture {
             throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
         }*/
 
-        p.getPlat().commander();
-        platchoisi.add(p);
-        notifySubscriber(p);
+        etat.ajoutePlat(p);
 
     }
 
@@ -199,7 +200,7 @@ public class Facture {
         String lesPlats = new String();
         String factureGenere = new String();
 
-        int i =1;
+        int i =0;
 
 
         factureGenere =   "Facture generee.\n" +
@@ -221,5 +222,21 @@ public class Facture {
         factureGenere += "          Le total est de:   " + total() + "\n";
 
         return factureGenere;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void addPlat(PlatChoisi p)
+    {
+        platchoisi.add(p);
     }
 }

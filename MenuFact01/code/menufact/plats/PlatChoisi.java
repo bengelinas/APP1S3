@@ -9,7 +9,12 @@ public class PlatChoisi {
 
     public PlatChoisi(PlatAuMenu platrecu, int quantite) throws PlatException
     {
-        plat=new PlatAuMenu(platrecu.getCode(), platrecu.getDescription(), platrecu.getPrix());
+        if(platrecu.getClass()==PlatEnfant.class){
+            plat = new PlatEnfant(platrecu.getCode(), platrecu.getDescription(), platrecu.getPrix(), platrecu.getProportion());
+        }
+        else{
+        plat = new PlatAuMenu(platrecu.getCode(), platrecu.getDescription(), platrecu.getPrix());
+    }
         for(int i=0; i<platrecu.getRecette().size();i++)
         {
             plat.ajouterIngredient(platrecu.getRecette().get(i));

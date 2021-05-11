@@ -10,12 +10,11 @@ import java.util.Date;
 public class Payer implements FactureEtat{
 
     private Facture facture;
-    private Date date;
-    private String description;
-    private Client client;
-    private ArrayList<PlatChoisi> platchoisi;
 
-    public Payer(){};
+
+    public Payer(Facture l_facture){
+        facture=l_facture;
+        };
     @Override
     public void payer() throws FactureException {
         throw new FactureException("La facture est deja payee.");
@@ -28,7 +27,13 @@ public class Payer implements FactureEtat{
     public void ouvrir() throws FactureException {
         throw new FactureException("La facture ne peut pas être reouverte.");
     }
+
     @Override
+    public void fermer() throws FactureException {
+        throw new FactureException("La facture est déja payé.");
+    }
+
+   /* @Override
     public String genereFacture() throws FactureException {
         String lesPlats = new String();
         String factureGenere = new String();
@@ -37,9 +42,9 @@ public class Payer implements FactureEtat{
 
 
         factureGenere =   "Facture generee.\n" +
-                "Date:" + date + "\n" +
-                "Description: " + description + "\n" +
-                "Client:" + client.getNom() + "\n" +
+                "Date:" + facture.getDate() + "\n" +
+                "Description: " + facture.getDescription() + "\n" +
+                "Client:" + facture.getClient().getNom() + "\n" +
                 "Les plats commandes:" + "\n" + lesPlats;
 
         factureGenere += "Seq   Plat         Prix   Quantite\n";
@@ -54,5 +59,5 @@ public class Payer implements FactureEtat{
         factureGenere += "          Le total est de:   " + facture.total() + "\n";
 
         return factureGenere;
-    }
+    }*/
 }

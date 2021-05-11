@@ -83,7 +83,7 @@ public class TestMenuFactUnitaire {
             System.out.println(e);
         }
 
-        System.out.println("Assignation valide");
+        System.out.println("Assignation invalide");
         try {
             p2.setCode(2);
         } catch (Exception e) {
@@ -153,94 +153,124 @@ public class TestMenuFactUnitaire {
         }
         System.out.println("\n========================================================================================================\n");
         /*------------test de set--------------*/
-        System.out.println("test setprix");
+        System.out.println("========================================================================================================");
+        System.out.println("Assignation et accession du prix du Plat au menu");
+        System.out.println("==========================================================");
+        System.out.println();
+        System.out.println("Assignation valide");
         try {
             p1.setPrix(1);
         } catch (Exception e) {
             System.out.println(e);
         }
-        try {
-            p2.setPrix(2);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            p3.setPrix(-1);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        /*-----------test de get--------------*/
-        System.out.println("test getprix");
+
         try {
             System.out.println(p1.getPrix());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Assignation invalide");
+        try {
+            p2.setPrix(2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         try {
             System.out.println(p2.getPrix());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Assignation invalide");
+        try {
+            p3.setPrix(-1);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         try {
             System.out.println(p3.getPrix());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println("\n========================================================================================================\n");
+
         /*-----------test d'etat--------------*/
-        System.out.println("test etat");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests de l'etat des plats");
+        System.out.println("==========================================================");
+
+        System.out.println();
+        System.out.println("Etat Commander");
+
         try {
             p1.commander();
             System.out.println(p1.getEtat());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println();
+        System.out.println("Etat Preparer");
+
         try {
             p1.Preparer();
             System.out.println(p1.getEtat());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println();
+        System.out.println("Etat Servi");
+
         try {
             p1.servir();
             System.out.println(p1.getEtat());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println();
+        System.out.println("Etat Terminer");
+
         try {
             p1.terminer();
             System.out.println(p1.getEtat());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println();
+        System.out.println("Etat Impossible");
+
         try {
             p1.impossible();
             System.out.println(p1.getEtat());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("\n========================================================================================================\n");
         /*---------test ingredients------------*/
-        System.out.println("test factory");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests de generation d'ingredients");
+        System.out.println("==========================================================");
+
         IngredientFactory factory = new IngredientFactory();
         Ingredient i1 = null;
         Ingredient i2 = null;
         Ingredient i3 = null;
+
+        System.out.println();
+        System.out.println("Creation d'un ingredient VIANDE");
         try {
             i1 = factory.createingredient(TypeIngredient.VIANDE);
         } catch (Exception e) {
             System.out.println(e);
         }
-        try {
-            i2 = factory.createingredient(TypeIngredient.LEGUME);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            i3 = factory.createingredient(TypeIngredient.FRUIT);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        /*--------getter et setter----------*/
-        System.out.println("test setter");
+
         try {
             i1.setNom("steak");
         } catch (Exception e) {
@@ -253,6 +283,31 @@ public class TestMenuFactUnitaire {
         }
         try {
             i1.setTypeIngredient(TypeIngredient.VIANDE);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            System.out.println(i1.getNom());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println(i1.getDescription());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println(i1.getTypeIngredient());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+        System.out.println("Creation d'un ingredient LEGUME");
+
+        try {
+            i2 = factory.createingredient(TypeIngredient.LEGUME);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -274,39 +329,6 @@ public class TestMenuFactUnitaire {
         }
 
         try {
-            i3.setNom("Creme");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            i3.setDescription("sauce au poivre");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            i3.setTypeIngredient(TypeIngredient.LAITIER);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        System.out.println("test getter");
-
-        try {
-            System.out.println(i1.getNom());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            System.out.println(i1.getDescription());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            System.out.println(i1.getTypeIngredient());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        try {
             System.out.println(i2.getNom());
         } catch (Exception e) {
             System.out.println(e);
@@ -318,6 +340,31 @@ public class TestMenuFactUnitaire {
         }
         try {
             System.out.println(i2.getTypeIngredient());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+        System.out.println("Creation d'un ingredient LAITIER");
+
+        try {
+            i3 = factory.createingredient(TypeIngredient.LAITIER);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            i3.setNom("Creme");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            i3.setDescription("sauce au poivre");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            i3.setTypeIngredient(TypeIngredient.LAITIER);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -337,46 +384,27 @@ public class TestMenuFactUnitaire {
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println("\n========================================================================================================\n");
         /*-----------test ingredient inventaire--------------*/
-        System.out.println("test creation ingredients inventaire");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests Creation d'ingredients inventaire");
+        System.out.println("==========================================================");
+
         IngredientInventaire ii1 = null;
         IngredientInventaire ii2 = null;
         IngredientInventaire ii3 = null;
+
+        System.out.println();
+        System.out.println("Cas 1");
         try {
             ii1 = new IngredientInventaire(i2, 500);
         } catch (Exception e) {
             System.out.println(e);
         }
-        try {
-            ii2 = new IngredientInventaire(i1, 250);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            ii3 = new IngredientInventaire(i1, -100);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            ii3 = new IngredientInventaire(i1, 100);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
 
-        /*-----------test getter setter------------------*/
-        System.out.println("test getter setter");
         try {
             ii1.setIngredient(i1);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            ii2.setIngredient(i2);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            ii3.setIngredient(i3);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -386,67 +414,122 @@ public class TestMenuFactUnitaire {
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("Quantite de 1000 de depart");
         try {
-            ii2.setQuantite(-200);
+            System.out.println(ii1.getQuantite());
         } catch (Exception e) {
             System.out.println(e);
         }
-        try {
-            ii3.setQuantite(300);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        System.out.println("On retire 25");
         try {
             ii1.retirerQuantite(25);
         } catch (Exception e) {
             System.out.println(e);
         }
         try {
+            System.out.println(ii1.getQuantite());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("On retire 50000");
+        try {
             ii1.retirerQuantite(50000);
         } catch (Exception e) {
             System.out.println(e);
         }
-        /*---------------------------get ------------------------------*/
+        System.out.println("Quel est l'ingredient");
         try {
             System.out.println(ii1.getIngredient());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println();
+        System.out.println("Cas 2");
         try {
-            System.out.println(ii2.getIngredient());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            System.out.println(ii3.getIngredient());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        try {
-            System.out.println(ii3.getQuantite());
+            ii2 = new IngredientInventaire(i1, 250);
         } catch (Exception e) {
             System.out.println(e);
         }
 
         try {
-            System.out.println(ii1.getQuantite());
+            ii2.setIngredient(i2);
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("Quantité de départ");
         try {
             System.out.println(ii2.getQuantite());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("Essayer d'assigner une quantité négative");
+        try {
+            ii2.setQuantite(-200);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Quel est l'ingredient");
+        try {
+            System.out.println(ii2.getIngredient());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+        System.out.println("Cas 3");
+        System.out.println("Creation d'inventaire avec quantité négative");
+        try {
+            ii3 = new IngredientInventaire(i1, -100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+        System.out.println("Cas 4");
+        try {
+            ii3 = new IngredientInventaire(i1, 100);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            ii3.setIngredient(i3);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Quantité de départ");
         try {
             System.out.println(ii3.getQuantite());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("On ajoute une certaine quantité à la quantité de départ");
+        try {
+            ii3.setQuantite(300);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
+        try {
+            System.out.println(ii3.getQuantite());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Quel est l'ingrédient");
+        try {
+            System.out.println(ii3.getIngredient());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("\n========================================================================================================\n");
 
         /*-----------test recette plat menu--------------*/
-        System.out.println("test recette plat");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests des recettes pour les plats");
+        System.out.println("==========================================================");
+
         try {
             p1.ajouterIngredient(ii1);
         } catch (Exception e) {
@@ -462,24 +545,35 @@ public class TestMenuFactUnitaire {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        System.out.println();
+        System.out.println("Création d'une recette pour un plat valide");
         try {
             System.out.println(p1.getRecette());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Création d'une recette pour un plat invalide");
         try {
             System.out.println(p2.getRecette());
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Création d'une recette pour un plat invalide");
         try {
             System.out.println(p3.getRecette());
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println("\n========================================================================================================\n");
+
         /*-------------test inventaire-----------*/
-        System.out.println("test inventaire");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests de l'inventaire");
+        System.out.println("==========================================================");
+
         Inventaire.getInstance();
 
         try {
@@ -491,46 +585,65 @@ public class TestMenuFactUnitaire {
         try {
             Inventaire.getInstance().retirer(0,25);
         } catch (Exception e){System.out.println(e);}
+
+        System.out.println("Enlever un index qui n'existe pas dans l'inventaire");
         try {
             Inventaire.getInstance().retirer(20,25);
         } catch (Exception e){System.out.println(e);}
+        System.out.println("Trouver un index inexistant dans inventaire");
         try {
             System.out.println(Inventaire.getInstance().verifier(ii1));
         } catch (Exception e){System.out.println(e);}
+        System.out.println("Trouver un autre index inexistant dans inventaire");
         try {
             System.out.println(Inventaire.getInstance().verifier(ii2));
         } catch (Exception e){System.out.println(e);}
         Inventaire.getInstance();
+        System.out.println("Trouver un autre index inexistant dans inventaire");
         try {
             System.out.println(Inventaire.getInstance().verifier(ii1));
         } catch (Exception e){System.out.println(e);}
+        System.out.println("Trouver un autre index inexistant dans inventaire");
         try {
             System.out.println(Inventaire.getInstance().verifier(ii2));
         } catch (Exception e){System.out.println(e);}
-/*--------------- test plat choisi ---------------*/
-        System.out.println("test plat choisi");
+
+        System.out.println("\n========================================================================================================\n");
+
+        /*--------------- test plat choisi ---------------*/
+        System.out.println("========================================================================================================");
+        System.out.println("Tests de plat choisi");
+        System.out.println("==========================================================");
+
         PlatChoisi pc1= null;
         PlatChoisi pc2= null;
         try {
             pc1= new PlatChoisi(p1, 2);
         } catch (Exception e){System.out.println(e);}
-
+        System.out.println("Choisir un plat avec une quantité négative");
         try {
             pc2= new PlatChoisi(p1, -1);
-         } catch (Exception e){System.out.println(e);}
-
+        } catch (Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Impression d'un plat choisi");
         try {
             System.out.println(pc1.getPlat());
         } catch (Exception e){System.out.println(e);}
         try {
             pc1.setQuantite(1);
         } catch (Exception e){System.out.println(e);}
-
+        System.out.println("Impression de la quantité d'un plat positif");
         try {
             System.out.println(pc1.getQuantite());
         } catch (Exception e){System.out.println(e);}
+
+        System.out.println("\n========================================================================================================\n");
+
         /*--------------test Client----------------*/
-        System.out.println("test client");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests pour client");
+        System.out.println("==========================================================");
+
         Client client1= null;
         Client client2= null;
         Client client3= null;
@@ -543,6 +656,8 @@ public class TestMenuFactUnitaire {
         try {
             client3= new Client(3,"Domingo","789789789");
         } catch (Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Impression du code, nom et numéro de carte de client 1");
         try {
             System.out.println(client1.getIdClient());
         } catch (Exception e){System.out.println(e);}
@@ -568,35 +683,54 @@ public class TestMenuFactUnitaire {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        System.out.println();
+        System.out.println("Impression de ID client 2");
         try {
             System.out.println(client2.getIdClient());
         } catch (Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Impression du nom client 2");
         try {
             System.out.println(client2.getNom());
         } catch (Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Impression du numero de carte de client 2");
         try {
             System.out.println(client2.getNumeroCarteCredit());}
-            catch(Exception e){System.out.println(e);}
+        catch(Exception e){System.out.println(e);}
 
+        System.out.println();
+        System.out.println("Impression du client 3 complet");
         try {
             System.out.println(client3.toString());}
         catch(Exception e){System.out.println(e);}
+
+        System.out.println("\n========================================================================================================\n");
+
         /*--------------test Menu---------------*/
-        System.out.println("test menu");
+        System.out.println("========================================================================================================");
+        System.out.println("Tests pour Menu");
+        System.out.println("==========================================================");
+
         Menu.getInstance("le meilleur menu");
+        System.out.println();
+        System.out.println("Tentative d'impression d'un menu avec un nom différent");
         try {
             System.out.println(Menu.getInstance("le pire menu").toString());}
         catch(Exception e){System.out.println(e);}
         Menu menu=Menu.getInstance("Le pire menu");
+        System.out.println();
+        System.out.println("Tentative de changer de position pour celle précédente avec aucun plat");
         try {
             menu.positionPrecedente();}
         catch(Exception e){System.out.println(e);}
-
+        System.out.println();
+        System.out.println("Tentative de changer de position pour celle suivante avec aucun plat");
         try {
             menu.positionSuivante();}
         catch(Exception e){System.out.println(e);}
-
+        System.out.println();
+        System.out.println("Ajout de 2 plats au menu");
         try {
             menu.ajoute(p1);}
         catch(Exception e){System.out.println(e);}
@@ -604,10 +738,13 @@ public class TestMenuFactUnitaire {
         try {
             menu.ajoute(p1);}
         catch(Exception e){System.out.println(e);}
-
+        System.out.println();
+        System.out.println("Affichage du plat courant");
         try {
             System.out.println(menu.platCourant());}
         catch(Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Affichage du plat suivant");
         try {
             menu.positionSuivante();}
         catch(Exception e){System.out.println(e);}
@@ -615,7 +752,8 @@ public class TestMenuFactUnitaire {
         try {
             System.out.println(menu.platCourant());}
         catch(Exception e){System.out.println(e);}
-
+        System.out.println();
+        System.out.println("Affichage du plat a la position 0");
         try {
             menu.position(0);}
         catch(Exception e){System.out.println(e);}
@@ -623,6 +761,8 @@ public class TestMenuFactUnitaire {
         try {
             System.out.println(menu.platCourant());}
         catch(Exception e){System.out.println(e);}
+
+        System.out.println("\n========================================================================================================\n");
 
         /*--------------test Plat sante---------*/
         System.out.println("=======================================================================");
@@ -679,7 +819,13 @@ public class TestMenuFactUnitaire {
         System.out.print("Gras:");
         System.out.println(l_ps3.getGras());
 
+        System.out.println("\n========================================================================================================\n");
+
         /*--------------test Plat enfant----------*/
+        System.out.println("========================================================================================================");
+        System.out.println("Tests Plat enfant");
+        System.out.println("==========================================================");
+
         PlatEnfant pe1=null;
         PlatEnfant pe2=null;
 
@@ -688,25 +834,41 @@ public class TestMenuFactUnitaire {
         } catch (PlatException e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Ajout d'un plat enfant avec proportion négative");
         try {
             pe2 = new PlatEnfant(0, "PlatAuMenu0", 10,-0.5);
         } catch (PlatException e) {
             System.out.println(e);
         }
+        System.out.println();
+        System.out.println("Affichage d'un plat enfant a proportion 1/2");
         try {
             System.out.println(pe1.toString());}
         catch(Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Affichage d'un plat enfant a proportion négative");
         try {
             System.out.println(pe2.toString());}
         catch(Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Affichage de la proportion d'un plat enfant positif");
         try {
             System.out.println(pe1.getProportion());}
         catch(Exception e){System.out.println(e);}
+        System.out.println();
+        System.out.println("Affichage de la proportion d'un plat enfant negatif");
         try {
             System.out.println(pe2.getProportion());}
         catch(Exception e){System.out.println(e);}
 
+        System.out.println("\n========================================================================================================\n");
+
         /*----------------test chef---------------*/
+        System.out.println("========================================================================================================");
+        System.out.println("Tests Chef");
+        System.out.println("==========================================================");
+
         Chef chef=Chef.getInstance();
         Ingredient ingredient_chef1=null;
         Ingredient ingredient_chef2=null;
@@ -921,41 +1083,130 @@ public class TestMenuFactUnitaire {
         /*---------test plat normal------------*/
         System.out.println("plat normal");
         try {
-        chef.update(plat_chef_choisi);
+            chef.update(plat_chef_choisi);
         } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
         System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*---------test plat sante----------------*/
         System.out.println("plat sante");
         try {
-        chef.update(plat_sante_choisi);
+            chef.update(plat_sante_choisi);
         } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
         System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*---------test plat Enfant----------------*/
         System.out.println("plat enfant");
         try {
-        chef.update(plat_enfant_choisi);
+            chef.update(plat_enfant_choisi);
         } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
         System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*----------deuxieme test plat enfant-------*/
         System.out.println("plat enfant 2");
         try {
-        chef.update(plat_enfant_choisi);
+            chef.update(plat_enfant_choisi);
         } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
         System.out.println(plat_chef_choisi.getPlat().getEtat());
         /*-----------test plat impossible car pas assez d'ingredient---------*/
         System.out.println("plat impossible");
         try {
-        chef.update(plat_impossible_choisi);
+            chef.update(plat_impossible_choisi);
         } catch (Exception e){System.out.println(e);}
         System.out.println(inventaire.toString());
         System.out.println(plat_chef_choisi.getPlat().getEtat());
         System.out.println(plat_impossible_choisi.getPlat().getEtat());
+
+        System.out.println("\n========================================================================================================\n");
+
         /*---------------test Facture--------------*/
         Facture l_f1 = new Facture("Facture de test numero 1");
-        
+        PlatAuMenu plat_facture1=null;
+        PlatAuMenu plat_facture2=null;
+        try {
+            plat_facture1 = new PlatAuMenu(5, "Plat facture 1", 10);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+        try {
+            plat_facture2 = new PlatAuMenu(6, "Plat facture 2", 10);
+        } catch (PlatException e) {
+            System.out.println(e);
+        }
+
+        try {
+            plat_facture1.ajouterIngredient(ingredient_plat4);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            plat_facture2.ajouterIngredient(ingredient_plat5);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        PlatChoisi plat_facture_choisi1=null;
+        PlatChoisi plat_facture_choisi2=null;
+        try {
+            plat_facture_choisi1= new PlatChoisi(plat_facture1, 1);
+        } catch (Exception e){System.out.println(e);}
+        try {
+            plat_facture_choisi2= new PlatChoisi(plat_facture2, 1);
+        } catch (Exception e){System.out.println(e);}
+
+        try{
+            l_f1.ajoutePlat(plat_facture_choisi1);
+        }catch(Exception e){System.out.println(e);}
+
+
+        try{
+            l_f1.associerClient(client1);
+        }catch(Exception e){System.out.println(e);}
+
+        System.out.println("facture avec un plat");
+        try{
+            System.out.println(l_f1.genererFacture());
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("essaye d'ajouter dans une facture fermer");
+        try{
+            l_f1.fermer();
+        }catch(Exception e){System.out.println(e);}
+
+        try{
+            l_f1.ajoutePlat(plat_facture_choisi2);
+        }catch(Exception e){System.out.println(e);}
+
+        try{
+            System.out.println(l_f1.genererFacture());
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("ajoute un deuxieme plat");
+        try{
+            l_f1.ouvrir();
+        }catch(Exception e){System.out.println(e);}
+
+        try{
+            l_f1.ajoutePlat(plat_facture_choisi2);
+        }catch(Exception e){System.out.println(e);}
+
+        try{
+            System.out.println(l_f1.genererFacture());
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("payer une facture ouverte");
+        try{
+            l_f1.payer();
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("Payer une facture fermer");
+        try{
+            l_f1.fermer();
+        }catch(Exception e){System.out.println(e);}
+
+        try{
+            l_f1.payer();
+        }catch(Exception e){System.out.println(e);}
+        System.out.println("Payer une facture finale");
+        try{
+            System.out.println(l_f1.genererFacture());
+        }catch(Exception e){System.out.println(e);}
+
 }
 }

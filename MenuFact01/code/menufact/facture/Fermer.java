@@ -13,22 +13,15 @@ import java.util.Date;
 public class Fermer implements FactureEtat{
 
     private Facture facture;
-    private Date date;
-    private String description;
-    private Client client;
-    private ArrayList<PlatChoisi> platchoisi;
 
-    public Fermer(){};
+
+    public Fermer(Facture l_facture){
+        facture=l_facture;
+
+    };
     @Override
     public void payer() throws FactureException {
-        for(int i=0;i<platchoisi.size();i++){
-            if(platchoisi.get(i).getPlat().getEtat().getClass() != Impossible.class &&
-                    platchoisi.get(i).getPlat().getEtat().getClass() != Servi.class)
-            {
-                throw new FactureException("On ne peux payer qu'une fois les plats servi");
-            }
-        }
-        facture.setEtat(new Payer());
+        facture.setEtat(new Payer(facture));
     }
     @Override
     public void ajoutePlat(PlatChoisi p) throws FactureException {
@@ -36,10 +29,15 @@ public class Fermer implements FactureEtat{
     }
     @Override
     public void ouvrir() throws FactureException {
-        facture.setEtat(new Ouverte());
+        facture.setEtat(new Ouverte(facture));
     }
+
+
     @Override
-    public String genereFacture() throws FactureException {
+    public void fermer() throws FactureException {
+        throw new FactureException("La facture est déja dans l'état fermer.");
+    }
+    /*public String genereFacture() throws FactureException {
 
         String lesPlats = new String();
         String factureGenere = new String();
@@ -69,5 +67,5 @@ public class Fermer implements FactureEtat{
         factureGenere += "          Le total est de:   " + facture.total() + "\n";
 
         return factureGenere;
-    }
+    }*/
 }

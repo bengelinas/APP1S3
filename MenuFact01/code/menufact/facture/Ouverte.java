@@ -1,17 +1,22 @@
 package menufact.facture;
 
+import menufact.Client;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Ouverte implements FactureEtat{
 
     private Facture facture;
-    private ArrayList<PlatChoisi> platchoisi;
-    private ArrayList<Subscriber> subscriber;
 
-    public Ouverte(){};
+
+
+    public Ouverte(Facture l_facture){
+        facture=l_facture;
+
+    };
     @Override
     public void payer() throws FactureException {
         throw new FactureException("La facture doit etre Fermer avant de payer");
@@ -19,15 +24,19 @@ public class Ouverte implements FactureEtat{
     @Override
     public void ajoutePlat(PlatChoisi p) throws FactureException {
         p.getPlat().commander();
-        platchoisi.add(p);
+        facture.addPlat(p);
         facture.notifySubscriber(p);
     }
     @Override
     public void ouvrir() throws FactureException {
-        facture.setEtat(new Ouverte());
+        throw new FactureException("La facture est deja ouverte");
     }
     @Override
-    public String genereFacture() throws FactureException {
-        throw new FactureException("Criss de beigne ta facture est pas fermee");
+    public void fermer() throws FactureException {
+        facture.setEtat(new Fermer(facture));
     }
+    /*@Override
+    public String genereFacture() throws FactureException {
+        throw new FactureException("Il faut que la facture soit Fermer pour la payer");
+    }*/
 }
