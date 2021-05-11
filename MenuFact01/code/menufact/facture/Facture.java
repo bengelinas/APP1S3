@@ -217,10 +217,7 @@ public class Facture {
                 i++;
             }
 
-        factureGenere += "          TPS:               " + tps() + "\n";
-        factureGenere += "          TVQ:               " + tvq() + "\n";
-        factureGenere += "          Le total est de:   " + total() + "\n";
-
+        factureGenere = etat.genereFacture(factureGenere);
         return factureGenere;
     }
 

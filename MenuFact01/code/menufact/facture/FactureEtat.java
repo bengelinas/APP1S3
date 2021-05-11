@@ -8,6 +8,6 @@ public interface FactureEtat {
     public void payer() throws FactureException;
     public void ouvrir() throws FactureException;
     public void ajoutePlat(PlatChoisi p) throws FactureException;
-    /*public String genereFacture() throws FactureException;*/
+    public String genereFacture(String factureGenere);
 
 }

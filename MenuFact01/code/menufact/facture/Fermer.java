@@ -37,35 +37,11 @@ public class Fermer implements FactureEtat{
     public void fermer() throws FactureException {
         throw new FactureException("La facture est déja dans l'état fermer.");
     }
-    /*public String genereFacture() throws FactureException {
-
-        String lesPlats = new String();
-        String factureGenere = new String();
-
-        int i =1;
-
-
-        factureGenere =   "Facture generee.\n" +
-                "Date:" + date + "\n" +
-                "Description: " + description + "\n" +
-                "Client:" + client.getNom() + "\n" +
-                "Les plats commandes:" + "\n" + lesPlats;
-
-        factureGenere += "Seq   Plat         Prix   Quantite\n";
-        for (PlatChoisi plat : platchoisi)
-        {
-            if(platchoisi.get(i).getPlat().getEtat().getClass() == Servi.class)
-            {
-                factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-                i++;
-            }
-
-        }
-
+    public String genereFacture( String factureGenere){
+        factureGenere += "          Le sous-total est de:   " + facture.sousTotal() + "\n";
         factureGenere += "          TPS:               " + facture.tps() + "\n";
         factureGenere += "          TVQ:               " + facture.tvq() + "\n";
         factureGenere += "          Le total est de:   " + facture.total() + "\n";
-
         return factureGenere;
-    }*/
+    }
 }

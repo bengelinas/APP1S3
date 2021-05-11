@@ -35,8 +35,9 @@ public class Ouverte implements FactureEtat{
     public void fermer() throws FactureException {
         facture.setEtat(new Fermer(facture));
     }
-    /*@Override
-    public String genereFacture() throws FactureException {
-        throw new FactureException("Il faut que la facture soit Fermer pour la payer");
-    }*/
+    @Override
+    public String genereFacture( String factureGenere){
+
+        return factureGenere;
+    }
 }
