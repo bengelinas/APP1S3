@@ -3,6 +3,7 @@ package menufact.facture;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
+import menufact.plats.Servi;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,11 +54,16 @@ public class Facture {
      * Calcul du sous total de la facture
      * @return le sous total
      */
-    public double sousTotal()
-    {
-        double soustotal=0;
-         for (PlatChoisi p : platchoisi)
-             soustotal += p.getQuantite() * p.getPlat().getPrix();
+    public double sousTotal() {
+        double soustotal = 0;
+        int compteur = 0;
+        for (PlatChoisi p : platchoisi){
+            if (platchoisi.get(compteur).getPlat().getEtat().getClass() == Servi.class) {
+                soustotal += p.getQuantite() * p.getPlat().getPrix();
+            }
+        compteur++;
+        }
+
         return soustotal;
     }
 
@@ -93,13 +99,6 @@ public class Facture {
      */
     public void payer() throws FactureException
     {
-        /*if (etat.getEtat() == "Fermer")
-        {
-            etat = new Payer();
-        }else
-        {
-            throw new FactureException("La facture doit etre Fermer avant de payer");
-        }*/
         etat = new Payer();
     }
     /**
@@ -211,10 +210,11 @@ public class Facture {
 
         factureGenere += "Seq   Plat         Prix   Quantite\n";
         for (PlatChoisi plat : platchoisi)
-        {
-            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-            i++;
-        }
+            if(platchoisi.get(i).getPlat().getEtat().getClass() == Servi.class)
+            {
+                factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
+                i++;
+            }
 
         factureGenere += "          TPS:               " + tps() + "\n";
         factureGenere += "          TVQ:               " + tvq() + "\n";

@@ -2,7 +2,10 @@ package menufact.facture;
 
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
+import menufact.plats.Impossible;
 import menufact.plats.PlatChoisi;
+import menufact.plats.PlatEtat;
+import menufact.plats.Servi;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +21,13 @@ public class Fermer implements FactureEtat{
     public Fermer(){};
     @Override
     public void payer() throws FactureException {
+        for(int i=0;i<platchoisi.size();i++){
+            if(platchoisi.get(i).getPlat().getEtat().getClass() != Impossible.class &&
+                    platchoisi.get(i).getPlat().getEtat().getClass() != Servi.class)
+            {
+                throw new FactureException("On ne peux payer qu'une fois les plats servi");
+            }
+        }
         facture.setEtat(new Payer());
     }
     @Override
@@ -46,8 +56,12 @@ public class Fermer implements FactureEtat{
         factureGenere += "Seq   Plat         Prix   Quantite\n";
         for (PlatChoisi plat : platchoisi)
         {
-            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-            i++;
+            if(platchoisi.get(i).getPlat().getEtat().getClass() == Servi.class)
+            {
+                factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
+                i++;
+            }
+
         }
 
         factureGenere += "          TPS:               " + facture.tps() + "\n";
